@@ -1,0 +1,28 @@
+class Person {
+    constructor(name, age, gender, address) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.address = address;
+    }
+
+    displayDetails() {
+        console.log(`Name: ${this.name}`);
+        console.log(`Age: ${this.age}`);
+        console.log(`Gender: ${this.gender}`);
+        console.log(`Address: ${this.address}`);
+    }
+
+    changeAddress(newAddress) {
+        this.address = newAddress;
+        console.log(`${this.name}'s address updated to: ${this.address}`);
+    }
+}
+
+// Example usage:
+let person1 = new Person("Alice", 30, "Female", "123 Main St, Anytown");
+person1.displayDetails();
+
+console.log("\nUpdating address...");
+person1.changeAddress("456 Oak Ave, Othertown");
+person1.displayDetails();

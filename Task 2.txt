@@ -1,0 +1,25 @@
+class UberPriceCalculator {
+    constructor(baseFarePerKm, costPerMinute, surgeMultiplier) {
+        this.baseFarePerKm = baseFarePerKm;
+        this.costPerMinute = costPerMinute;
+        this.surgeMultiplier = surgeMultiplier;
+    }
+
+    calculatePrice(distanceInKm, timeInMinutes, surgeFactor = 1) {
+        // Apply surge pricing if surgeFactor is provided
+        let surgeMultiplier = surgeFactor * this.surgeMultiplier;
+
+        // Calculate fare
+        let fare = this.baseFarePerKm * distanceInKm + this.costPerMinute * timeInMinutes;
+        let totalFare = fare * surgeMultiplier;
+
+        return totalFare;
+    }
+}
+
+// Example usage:
+let calculator = new UberPriceCalculator(2.5, 0.5, 1.5); // Base fare $2.5 per km, $0.5 per minute, surge multiplier 1.5
+
+// Calculate price for a 10 km ride taking 20 minutes, with surge factor of 1.5
+let price = calculator.calculatePrice(10, 20, 1.5);
+console.log(`Estimated Uber fare: $${price.toFixed(2)}`);
